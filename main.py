@@ -1,23 +1,27 @@
 # import cv2
 # import numpy as np
 #
-# face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+# face_cascade = cv2.CascadeClassifier('./capstone/haarcascades/haarcascade_frontalface_default.xml')
 #
-# img = cv2.imread('man4-side.jpg')
+# img = cv2.imread('./images/man1.jpg')
 # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 # for (x, y, w, h) in faces:
 #     cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 3)
 #
-# cv2.imshow('img',img)
+# cv2.imshow('img', img)
 # cv2.waitKey()
 # cv2.destroyAllWindows()
+
+
+
+
 
 import cv2
 
 # Loading the cascades
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+face_cascade = cv2.CascadeClassifier('./capstone/haarcascades/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('./capstone/haarcascades/haarcascade_eye.xml')
 
 # Defining a function that will do the detections
 def detect(gray, frame):
@@ -41,4 +45,5 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 video_capture.release()
+cv2.waitKey()
 cv2.destroyAllWindows()
